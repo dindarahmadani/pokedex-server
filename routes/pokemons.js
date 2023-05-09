@@ -43,4 +43,13 @@ router.get('/pokemons/:id', (req, res) => {
     });
   });
 
+  router.delete('/pokemons/:id', function(req, res, next) {
+    var id = req.params.id;
+    var sql = "DELETE FROM pokemons WHERE id = ?";
+    connection.query(sql, [id], function(err, result) {
+      if (err) throw err;
+      res.send("Pokemon dengan id " + id + " berhasil dihapus");
+    });
+  });
+
 module.exports = router;
