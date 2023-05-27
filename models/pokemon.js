@@ -13,13 +13,13 @@ class Pokemon {
   }
 
   static async addPokemon(name, avatar, moves) {
-      const [result] = await connection.execute('INSERT INTO pokemons (name, avatar, moves) VALUES (?, ?, ?)', [name, avatar, moves]);
+      const [result] = await connection.execute('INSERT INTO pokemons (name, avatar, type, weaknesses, description) VALUES (?, ?, ?, ? ,?)', [name, avatar, type, weaknesses, description ]);
       const id = result.insertId;
       return { id, name, avatar, moves };
   }
 
   static async updatePokemon(id, name, avatar, moves) {
-      await connection.execute('UPDATE pokemons SET name = ?, avatar = ?, moves = ? WHERE id = ?', [name, avatar, moves, id]);
+      await connection.execute('UPDATE pokemons SET name = ?, avatar = ?, type = ?, waknesses = ?, description = ? WHERE id = ?', [name, avatar, weaknesses, description, id]);
       return { id, name, avatar, moves };
   }
 
