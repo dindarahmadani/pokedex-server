@@ -1,13 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var connection = require('../connection');
+const userControler = require('../controllers/users');
 
-router.get('/', function(req, res, next) {
-  var sql = "SELECT * FROM users";
-  connection.query(sql, function(err, results) {
-    if (err) throw err;
-    res.json(results);
-  });
-});
+/* GET users listing. */
+// router.get('/', function(req, res, next) {
+//   res.send('respond with a resource');
+// });
+
+router.get('/users', userControler.getAllUser);
+
+router.get('/users/:id', userControler.getUserById);
+
+router.delete('/users/:id', userControler.deleteUser);
+
 
 module.exports = router;
