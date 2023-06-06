@@ -63,7 +63,7 @@ exports.addPokemon = async (req, res) => {
 
 exports.updatePokemon = async (req, res) => {
     const { id } = req.params;
-    const { name, avatar, moves } = req.body;
+    const { name, avatar, type, weaknesses, description } = req.body;
     try {
         const pokemon = await Pokemon.updatePokemon(id, name, avatar, type, weaknesses, description);
         res.json({
