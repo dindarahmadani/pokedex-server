@@ -19,7 +19,7 @@ class Pokemon {
   }
 
   static async updatePokemon(id, name, avatar, type, weaknesses, description) {
-      await connection.execute('UPDATE pokemons SET name = ?, avatar = ?, type = ?, waknesses = ?, description = ? WHERE id = ?', [name, avatar, weaknesses, description, id]);
+      await connection.execute('UPDATE pokemons SET name = ?, avatar = ?, type = ?, weaknesses = ?, description = ? WHERE id = ?', [name, avatar, type, weaknesses, description, id]);
       return { id, name, avatar, type, weaknesses, description };
   }
 

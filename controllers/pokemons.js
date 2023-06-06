@@ -44,7 +44,7 @@ exports.getPokemonById = async (req, res) => {
 };
 
 exports.addPokemon = async (req, res) => {
-    const { name, avatar, moves } = req.body;
+    const { name, avatar, type, weaknesses, description } = req.body;
     try {
         const pokemon = await Pokemon.addPokemon(name, avatar, type, weaknesses, description);
         res.json({
